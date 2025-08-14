@@ -27,7 +27,7 @@
 </script>
 
 <div class="flex min-h-screen flex-col bg-slate-900">
-	<div class="m-auto flex h-64 w-1/2 flex-none items-center">
+	<div class="m-auto flex h-64 w-2/3 md:w-1/2 flex-none items-center">
 		<input
 			type="text"
 			class="w-full rounded-2xl bg-slate-800 p-4 text-white shadow-2xl transition hover:scale-103"
@@ -39,7 +39,7 @@
 			}}
 		/>
 	</div>
-	<div class="m-auto w-1/2 flex-1">
+	<div class="m-auto w-2/3 md:w-1/2 flex-1">
 		{#each todos.toSorted((a, b) => Number(a.done) - Number(b.done)) as todo (todo.id)}
 			<div class="my-4 flex rounded-2xl bg-slate-800 p-4 shadow-2xl" transition:fade animate:flip>
 				<input type="checkbox" bind:checked={todo.done} />
