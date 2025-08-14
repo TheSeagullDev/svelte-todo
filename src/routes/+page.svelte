@@ -41,13 +41,13 @@
 	</div>
 	<div class="m-auto w-2/3 md:w-1/2 flex-1">
 		{#each todos.toSorted((a, b) => Number(a.done) - Number(b.done)) as todo (todo.id)}
-			<div class="my-4 flex rounded-2xl bg-slate-800 p-4 shadow-2xl" transition:fade animate:flip>
+			<div class="my-4 flex rounded-2xl bg-slate-800 p-4 shadow-2xl items-center" transition:fade animate:flip>
 				<input type="checkbox" bind:checked={todo.done} />
 				{#if !todo.editing}
 				<div
 					bind:this={todo.contentElement}
 					class={[
-						'mx-4 flex-1 w-4 rounded-md p-1',
+						'mx-4 flex-1 w-8 rounded-md p-1',
 						{ 'text-slate-400 line-through': todo.done },
 						{ 'text-white': !todo.done },
 						{ 'bg-slate-600': todo.editing}
