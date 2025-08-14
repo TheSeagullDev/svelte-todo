@@ -47,7 +47,7 @@
 				<div
 					bind:this={todo.contentElement}
 					class={[
-						'mx-4 flex-1 rounded-md p-1',
+						'mx-4 flex-1 w-4 rounded-md p-1',
 						{ 'text-slate-400 line-through': todo.done },
 						{ 'text-white': !todo.done },
 						{ 'bg-slate-600': todo.editing}
@@ -65,7 +65,7 @@
 						}
 					}}
 					class={[
-						'mx-4 flex-1 rounded-md p-1',
+						'mx-4 flex-initial rounded-md p-1 min-w-4',
 						{ 'text-slate-400 line-through': todo.done },
 						{ 'text-white': !todo.done },
 						{ 'bg-slate-600': todo.editing}
