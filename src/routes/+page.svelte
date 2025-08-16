@@ -5,10 +5,17 @@
 	import Edit from '$lib/Edit.svelte';
 	import { flip } from 'svelte/animate';
 	import { fade } from 'svelte/transition';
+	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 
-	const todos = $state([]);
+	let todos = $state([]);
+	let uid = 1;
 
-	let uid = todos.length + 1;
+	onMount(() => {
+		todos = JSON.parse(localStorage.todos);
+		uid = localStorage.uid
+	})
+
 
 	function add(desc) {
 		todos.push({
@@ -24,6 +31,12 @@
 		const toDeleteIndex = todos.findIndex((todo) => todo.id === id);
 		todos.splice(toDeleteIndex, 1);
 	}
+
+	$effect(() => {
+		const todosForStorage = todos.map(({contentElement, ...keepAttrs}) => keepAttrs);
+		localStorage.uid = uid;
+		localStorage.todos = JSON.stringify(todosForStorage);
+	})
 </script>
 
 <div class="flex min-h-screen flex-col bg-slate-900">
