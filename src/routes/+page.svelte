@@ -46,7 +46,7 @@
 			class="w-full rounded-2xl bg-slate-800 p-4 text-white shadow-2xl transition hover:scale-103"
 			placeholder="what to do?"
 			onkeydown={(e) => {
-				if (e.key !== 'Enter') return;
+				if (e.key !== 'Enter' || e.currentTarget.value.length === 0) return;
 				add(e.currentTarget.value);
 				e.currentTarget.value = '';
 			}}
@@ -73,7 +73,7 @@
 					bind:this={todo.contentElement}
 					bind:value={todo.text}
 					onkeydown={(e) => {
-						if(e.key === "Enter") {
+						if(e.key === "Enter" && e.currentTarget.value.length > 0) {
 							todo.editing = false;
 						}
 					}}
